@@ -4,9 +4,9 @@ import logger from './logger';
 
 dotenv.config();
 
-const DB =
-  process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/youtube-clone';
+const DB = process.env.DATABASE || 'mongodb://localhost:27017/youtube-clone';
 
+console.log(DB);
 export async function connectDB() {
   try {
     await mongoose.connect(DB, {
@@ -15,6 +15,7 @@ export async function connectDB() {
       autoIndex: true,
     } as ConnectOptions);
     logger.info('Connect to database');
+    console.log('Connection Successful');
   } catch (err) {
     console.error(err);
   }
